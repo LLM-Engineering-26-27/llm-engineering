@@ -1,0 +1,44 @@
+# Checks your submission each time you push a submit/wNN branch, the same way
+# `scripts/run.sh test` does on the cluster. Its result is feedback, not your grade.
+name: Submission check
+
+on:
+  push:
+    branches: ['submit/w??']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: submission-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Public tests on the committed submission
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Refuse a branch that is not submit/w02 to submit/w13
+        if: github.event_name == 'push'
+        run: |
+          if [[ ! "${GITHUB_REF_NAME}" =~ ^submit/w(0[2-9]|1[0-3])$ ]]; then
+            echo "::error::${GITHUB_REF_NAME} is not a submission branch. Name it submit/w02 to submit/w13."
+            exit 1
+          fi
+      - name: Check out the repository with its starter tags
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up Python 3.12
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: |
+          python -m pip install -c requirements/authoring-runtime.txt torch --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -r requirements/authoring-runtime.txt
+      - name: Run the submission check
+        run: bash scripts/check_submission.sh

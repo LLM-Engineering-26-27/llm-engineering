@@ -1,0 +1,32 @@
+run_name: week-02-one-block
+model:
+  d_model: 512
+  n_heads: 1
+  n_kv_heads: null
+  n_layers: 1
+  vocab_size: 8192
+  d_ff: 1536
+  max_context_length: 1024
+  norm_eps: 0.00001
+  tie_embeddings: true
+  pos_encoding: sinusoidal
+  rope_theta: 10000.0
+data:
+  tokenizer_name: PleIAs/Monad
+  tokenizer_revision: d8fce6b01ee5c5575bf00a74f6e6463ab5796112
+  tokens_path: assets/synth_monad_v1.npy
+  chat_template: null
+  sequence_length: 1024
+  num_workers: 4
+training:
+  microbatch_size_per_rank: 32
+  max_steps: 1000
+  log_interval: 10
+optimizer:
+  lr: 0.0003
+  weight_decay: 0.1
+schedule:
+  warmup_steps: 100
+rng:
+  seed: 42
+  deterministic: false

@@ -1,0 +1,83 @@
+{
+  "logical_name": "synth-monad-tokens",
+  "kind": "token-stream",
+  "producer": {
+    "script": "scripts/staff/build_synth_shard.py",
+    "commit": "74ba6a4f5915e779b33b6f36c2f1da34ee26394a"
+  },
+  "source": {
+    "dataset": "PleIAs/SYNTH",
+    "revision": "0d6813a2966662c39f22f0b9af28a0c1c9f7a437",
+    "license": "CC-BY-4.0",
+    "attribution": "PleIAs, SYNTH (https://huggingface.co/datasets/PleIAs/SYNTH), CC-BY-4.0",
+    "parquet_files": [
+      {
+        "name": "synth_001.parquet",
+        "rows_consumed": 124788
+      },
+      {
+        "name": "synth_002.parquet",
+        "rows_consumed": 125890
+      },
+      {
+        "name": "synth_003.parquet",
+        "rows_consumed": 126053
+      },
+      {
+        "name": "synth_004.parquet",
+        "rows_consumed": 125949
+      },
+      {
+        "name": "synth_005.parquet",
+        "rows_consumed": 126000
+      },
+      {
+        "name": "synth_006.parquet",
+        "rows_consumed": 70506
+      }
+    ],
+    "language": "en",
+    "rendering": "query + \"\\n\\n\" + synthetic_reasoning + \"\\n\\n\" + synthetic_answer"
+  },
+  "tokenizer": {
+    "name": "PleIAs/Monad",
+    "revision": "d8fce6b01ee5c5575bf00a74f6e6463ab5796112",
+    "tokenizer_json_sha256": "4c3348afbb0329b28b161e56c781ff9785764a295dd0faa3d758a2bc413a4c23"
+  },
+  "schema": {
+    "name": "flat-uint16-token-stream",
+    "version": 1,
+    "dtype": "uint16",
+    "shape": [
+      700000000
+    ],
+    "separator_id": 2
+  },
+  "files": [
+    {
+      "path": "assets/synth_monad_v1.npy",
+      "bytes": 1400000128,
+      "sha256": "f97d0a4c6124bfe353ac7b8ea94ef89678056a5e23c05c808c572943166a3201"
+    },
+    {
+      "path": "assets/synth_monad_mini_v1.npy",
+      "bytes": 524416,
+      "sha256": "ae7b31e91a250d81ab4eea6947f2416e720fc703c34e45272c60f32a35649340"
+    }
+  ],
+  "primary_uri": null,
+  "mirror": null,
+  "minimum_backend": "numpy",
+  "fallback": "mini shard + reference record",
+  "superseded": [
+    {
+      "date": "2026-09-23",
+      "reason": "extended from 33,554,432 to 700,000,000 tokens in place; the former token ids are a strict prefix of the current array",
+      "shape": [
+        33554432
+      ],
+      "bytes": 67108992,
+      "sha256": "93046c9c5cc45fc3798579cecb80e7da4fe9dd94c7e75b1a184bf9ce670e661a"
+    }
+  ]
+}

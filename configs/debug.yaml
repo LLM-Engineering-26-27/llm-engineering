@@ -1,0 +1,32 @@
+run_name: debug
+model:
+  d_model: 128
+  n_heads: 1
+  n_kv_heads: null
+  n_layers: 1
+  vocab_size: 8192
+  d_ff: 384
+  max_context_length: 128
+  norm_eps: 0.00001
+  tie_embeddings: true
+  pos_encoding: sinusoidal
+  rope_theta: 10000.0
+data:
+  tokenizer_name: PleIAs/Monad
+  tokenizer_revision: d8fce6b01ee5c5575bf00a74f6e6463ab5796112
+  tokens_path: assets/synth_monad_mini_v1.npy
+  chat_template: null
+  sequence_length: 128
+  num_workers: 0
+training:
+  microbatch_size_per_rank: 2
+  max_steps: 10
+  log_interval: 1
+optimizer:
+  lr: 0.001
+  weight_decay: 0.0
+schedule:
+  warmup_steps: 2
+rng:
+  seed: 42
+  deterministic: false

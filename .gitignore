@@ -1,0 +1,67 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Experiment tracking
+wandb/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Anki (generated build artifact)
+anki/*.apkg
+
+# Checkpoints and outputs
+checkpoints/
+outputs/
+tmp/
+*.pt
+*.bin
+runs/
+assets/synth_monad_v1.npy
+
+# Claude plans
+docs/plans/
+docs/superpowers/
+.superpowers/
+
+# Lectures app (Node.js)
+lectures/node_modules/
+lectures/dist/
+
+# Git worktrees
+.worktrees/
+
+# SLURM logs
+logs/*.out
+logs/*.err
+
+# Built container images
+containers/*.sif
+
+# Kernel demo correctness gate (Bonus Chapter 3, GPU-only artifact)
+scripts/kernels/.correctness-passed
+# A wheelhouse built in-tree is never committed (docs/ops/wheelhouse.md).
+/wheelhouse/

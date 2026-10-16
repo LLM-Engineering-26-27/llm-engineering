@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-engineering"
+version = "0.1.0"
+description = "A graduate ML course: build a production-style LLM training framework"
+requires-python = ">=3.11"
+dependencies = [
+    "torch>=2.0",
+    "numpy",
+    "pyyaml>=6.0",
+    "matplotlib",
+    "transformers",
+    "jsonschema>=4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "setuptools>=68.0",
+    "wheel",
+    "datasets",
+]
+anki = [
+    "genanki>=0.13.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"llm_engineering.data" = ["chat_template.jinja"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+markers = [
+    "external_artifact: requires pinned external artifacts and network access",
+]
