@@ -19,7 +19,8 @@ the course. Use the wiki when you want the full story on login, file systems or 
   Authenticator or Microsoft Authenticator), or a YubiKey.
 - A terminal with `ssh`: Terminal on macOS and Linux, PowerShell on Windows 10/11 (or
   [MobaXterm](https://mobaxterm.mobatek.net/), which the bwHPC wiki recommends for Windows).
-- A GitHub account that the course staff have invited to the course organization.
+- A GitHub account. After the first tutorial, the course staff invite it to the course
+  organization, where your pair's repository lives.
 - For logging in from home: the university VPN (eduVPN). See step B1.
 
 **Placeholders:** `zxabc12` stands for your ZDV login ID throughout. Replace it with your own
@@ -305,8 +306,9 @@ You have run a GPU job on the cluster. Delete the two files with
 
 ## Part D: Connect your course repository
 
-Do this part once you have access to your pair's repository on GitHub. You work in your own
-clone on the cluster. Your partner makes their own.
+Do this part now, with the public course repository. After the first tutorial in Week 2, when
+you have your pair's repository, do D2 and D3 again for it. You work in your own clone on the
+cluster. Your partner makes their own.
 
 ### D1. Give the cluster access to GitHub
 
@@ -343,9 +345,18 @@ The cluster needs its own SSH key to clone and push. On the **login node**:
    ssh-add
    ```
 
-### D2. Clone your pair's repository into your workspace
+### D2. Clone the course repository into your workspace
 
-On your repository's GitHub page, click **Code → SSH** and copy the address. It looks like
+Before you have your pair's repository, clone the public course repository. On the cluster:
+
+```
+cd "$(ws_find lme)"
+git clone git@github.com:LLM-Engineering-26-27/llm-engineering.git
+cd llm-engineering
+```
+
+Once you have your pair's repository, clone it next to the first one. On its GitHub page,
+click **Code → SSH** and copy the address. It looks like
 `git@github.com:LLM-Engineering-26-27/<repository name>.git`. On the cluster, go to your
 workspace, type `git clone ` (with a space), paste the address and press `Enter`:
 
@@ -359,6 +370,9 @@ Then change into the new folder, which has the repository's name without `.git`:
 ```
 cd <repository name>
 ```
+
+From then on you work in this clone. The public one can stay or go (`rm -rf llm-engineering`
+in the workspace).
 
 ### D3. Link the training dataset
 
