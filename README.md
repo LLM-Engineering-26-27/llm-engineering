@@ -100,3 +100,10 @@ Training data comes from two pre-tokenized shards. `assets/synth_monad_mini_v1.n
 small shard in this repository. `assets/synth_monad_v1.npy` is the full course shard, which
 `scripts/run.sh setup` links on the cluster. `assets/synth_monad_v1.provenance.json` records how
 it was built.
+
+## License
+
+The code is released under the MIT License (see [LICENSE](LICENSE)). The token shards in
+`assets/` are derived from [PleIAs SYNTH](https://huggingface.co/datasets/PleIAs/SYNTH), which
+is licensed under CC-BY-4.0, and keep that license. `assets/synth_monad_v1.provenance.json`
+records how they were built.
