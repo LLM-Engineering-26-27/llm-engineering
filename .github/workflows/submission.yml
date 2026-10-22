@@ -4,7 +4,7 @@ name: Submission check
 
 on:
   push:
-    branches: ['submit/w??']
+    branches: ['submit/w[0-9][0-9]']
   workflow_dispatch:
 
 permissions:
